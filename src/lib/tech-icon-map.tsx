@@ -1,0 +1,38 @@
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiSupabase,
+  SiPostgresql,
+  SiMysql,
+  SiFirebase,
+  SiPhp,
+  SiLaravel,
+  SiGit,
+  SiGithub,
+  SiVercel,
+  SiHostinger,
+} from "react-icons/si";
+import type { IconType } from "react-icons";
+
+export const techIconMap: Record<string, IconType> = {
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  TypeScript: SiTypescript,
+  "Tailwind CSS": SiTailwindcss,
+  "Node.js": SiNodedotjs,
+  Express: SiExpress,
+  Supabase: SiSupabase,
+  PostgreSQL: SiPostgresql,
+  MySQL: SiMysql,
+  Firebase: SiFirebase,
+  PHP: SiPhp,
+  Laravel: SiLaravel,
+  Git: SiGit,
+  GitHub: SiGithub,
+  Vercel: SiVercel,
+  Hostinger: SiHostinger,
+};
