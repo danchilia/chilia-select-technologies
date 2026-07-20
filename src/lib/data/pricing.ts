@@ -31,7 +31,9 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     name: "Professional",
-    price: "$1,500",
+    price: "$1,000",
+    originalPrice: "$1,500",
+    onSale: true,
     priceNote: "starting price",
     description: "A fully custom website or web application built for growing businesses that need more depth and functionality.",
     bestFor: "Growing businesses and e-commerce brands",
