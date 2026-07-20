@@ -15,7 +15,7 @@ export default function NotFound() {
           <span className="text-sm font-semibold uppercase tracking-wider text-accent">
             Error 404
           </span>
-          <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight text-text sm:text-5xl">
+          <h1 className="mt-4 text-balance font-display text-4xl font-semibold tracking-tight text-text sm:text-5xl">
             This page doesn&apos;t exist
           </h1>
           <p className="mt-5 text-balance leading-relaxed text-text-light">

@@ -8,7 +8,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTA } from "@/components/sections/home/cta";
 import { SiteMockup } from "@/components/portfolio/site-mockup";
+import { JsonLd } from "@/components/seo/json-ld";
 import { projects } from "@/lib/data/portfolio";
+import { SITE } from "@/lib/constants";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -34,8 +37,27 @@ export default async function ProjectPage({ params }: Props) {
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.name,
+    description: project.description,
+    creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    about: project.industry,
+    genre: project.category,
+    keywords: project.technologies.join(", "),
+  };
+
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: project.name, path: `/portfolio/${project.slug}` },
+  ]);
+
   return (
     <>
+      <JsonLd data={projectJsonLd} />
+      <JsonLd data={breadcrumb} />
       <section className="relative overflow-hidden border-b border-border py-24 sm:py-28">
         <div
           className="pointer-events-none absolute inset-0 opacity-95"
@@ -57,7 +79,7 @@ export default async function ProjectPage({ params }: Props) {
                 {project.industry}
               </span>
             </div>
-            <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="mt-4 text-balance font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
               {project.name}
             </h1>
             <p className="mt-5 max-w-xl text-balance text-lg leading-relaxed text-white/80">
@@ -128,7 +150,11 @@ export default async function ProjectPage({ params }: Props) {
         </Container>
       </section>
 
-      <CTA />
+      <CTA
+        title={`Want a website like ${project.name}?`}
+        description="Tell us about your business and we'll put together a tailored quote within 24 hours."
+        secondaryLabel="View More Work"
+      />
     </>
   );
 }

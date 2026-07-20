@@ -7,8 +7,28 @@ import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/page-hero";
 import { CTA } from "@/components/sections/home/cta";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getIcon } from "@/lib/icon-map";
 import { services } from "@/lib/data/services";
+import { SITE } from "@/lib/constants";
+import { breadcrumbJsonLd } from "@/lib/seo";
+
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": services.map((service) => ({
+    "@type": "Service",
+    name: service.title,
+    description: service.shortDescription,
+    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    areaServed: "Worldwide",
+    url: `${SITE.url}/services#${service.slug}`,
+  })),
+};
+
+const breadcrumb = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services" },
+]);
 
 export const metadata: Metadata = {
   title: "Services",
@@ -38,10 +58,13 @@ const CATEGORIES: { key: "web" | "software" | "growth"; label: string; descripti
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={servicesJsonLd} />
+      <JsonLd data={breadcrumb} />
       <PageHero
         eyebrow="Services"
         title="Web development and software services built around your business"
         description="From your first business website to a full custom platform, every service is delivered with the same standard of design, engineering, and communication."
+        image="/images/hero-services.jpg"
       />
 
       {CATEGORIES.map((category, categoryIndex) => {
@@ -107,7 +130,12 @@ export default function ServicesPage() {
         );
       })}
 
-      <CTA />
+      <CTA
+        title="Not sure which service fits your business?"
+        description="Tell us your goals and we'll recommend the right solution, with a clear quote to match."
+        secondaryLabel="See Pricing"
+        secondaryHref="/pricing"
+      />
     </>
   );
 }

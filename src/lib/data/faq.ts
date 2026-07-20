@@ -17,7 +17,7 @@ export const faqs: FaqItem[] = [
   {
     question: "How do international clients pay for projects?",
     answer:
-      "We accept international payments through Payoneer, along with other agreed payment methods. Payment schedules are outlined clearly in every project agreement before work begins.",
+      "We accept international payments through PayPal, Payoneer, and Stripe, along with other agreed payment methods. Payment schedules are outlined clearly in every project agreement before work begins.",
   },
   {
     question: "How long does it take to build a website?",

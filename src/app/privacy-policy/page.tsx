@@ -68,7 +68,7 @@ export default function PrivacyPolicyPage() {
               <p className="mt-3 leading-relaxed text-text-light">
                 We may share limited information with trusted third-party service providers who
                 support our operations, including hosting providers, payment processors such as
-                Payoneer, and email delivery services. These providers are only granted access
+                PayPal, Payoneer, and Stripe, and email delivery services. These providers are only granted access
                 to the information necessary to perform their function and are bound by their
                 own privacy and security obligations.
               </p>

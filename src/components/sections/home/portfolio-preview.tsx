@@ -21,7 +21,7 @@ export function PortfolioPreview() {
 
         <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURED.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} delay={i * 0.08} />
+            <ProjectCard key={project.slug} project={project} delay={i * 0.08} priority={i === 0} />
           ))}
         </div>
 

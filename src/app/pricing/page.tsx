@@ -8,7 +8,10 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { PageHero } from "@/components/layout/page-hero";
 import { CTA } from "@/components/sections/home/cta";
+import { SaleBadge } from "@/components/ui/sale-badge";
+import { JsonLd } from "@/components/seo/json-ld";
 import { pricingTiers, comparisonFeatures } from "@/lib/data/pricing";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -17,13 +20,20 @@ export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
 };
 
+const breadcrumb = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Pricing", path: "/pricing" },
+]);
+
 export default function PricingPage() {
   return (
     <>
+      <JsonLd data={breadcrumb} />
       <PageHero
         eyebrow="Pricing"
         title="Transparent pricing for every stage of growth"
         description="No hidden fees, no vague quotes. Every plan below reflects real scope, request a free quote for pricing tailored to your project."
+        image="/images/hero-pricing.jpg"
       />
 
       <section className="py-24 lg:py-32">
@@ -35,7 +45,7 @@ export default function PricingPage() {
                   className={cn(
                     "flex h-full flex-col rounded-3xl border p-8",
                     tier.highlighted
-                      ? "relative border-accent bg-primary shadow-xl shadow-accent/10"
+                      ? "relative border-accent bg-ink shadow-xl shadow-accent/10"
                       : "border-border bg-surface"
                   )}
                 >
@@ -51,13 +61,19 @@ export default function PricingPage() {
                     {tier.description}
                   </p>
                   <div className="mt-6 flex items-baseline gap-2">
-                    <span className={cn("text-4xl font-bold tracking-tight", tier.highlighted ? "text-white" : "text-text")}>
+                    {tier.originalPrice ? (
+                      <span className={cn("text-lg font-medium line-through", tier.highlighted ? "text-white/50" : "text-text-light/60")}>
+                        {tier.originalPrice}
+                      </span>
+                    ) : null}
+                    <span className={cn("font-display text-4xl font-semibold tracking-tight", tier.highlighted ? "text-white" : "text-text")}>
                       {tier.price}
                     </span>
                     <span className={cn("text-sm", tier.highlighted ? "text-white/60" : "text-text-light")}>
                       {tier.priceNote}
                     </span>
                   </div>
+                  {tier.onSale ? <SaleBadge highlighted={tier.highlighted} /> : null}
                   <p className={cn("mt-1 text-xs font-medium uppercase tracking-wider", tier.highlighted ? "text-accent-light" : "text-accent")}>
                     Best for {tier.bestFor}
                   </p>
@@ -141,7 +157,12 @@ export default function PricingPage() {
         </Container>
       </section>
 
-      <CTA />
+      <CTA
+        title="Still deciding which plan is right for you?"
+        description="Tell us about your project and we'll recommend the right plan, no pressure, no obligation."
+        primaryLabel="Request Your Quote"
+        secondaryLabel="See Our Work"
+      />
     </>
   );
 }

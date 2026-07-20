@@ -9,6 +9,7 @@ import { CTA } from "@/components/sections/home/cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { blogPosts } from "@/lib/data/blog";
 import { SITE } from "@/lib/constants";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -58,10 +59,17 @@ export default async function BlogPostPage({ params }: Props) {
     mainEntityOfPage: `${SITE.url}/blog/${post.slug}`,
   };
 
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
+
   return (
     <>
       <JsonLd data={articleJsonLd} />
-      <section className="relative overflow-hidden border-b border-border bg-primary py-20 sm:py-24">
+      <JsonLd data={breadcrumb} />
+      <section className="relative overflow-hidden border-b border-border bg-ink py-20 sm:py-24">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" />
         <Container className="relative">
           <Reveal className="mx-auto max-w-3xl">
@@ -73,7 +81,7 @@ export default async function BlogPostPage({ params }: Props) {
               Back to Blog
             </Link>
             <Badge className="mt-6 border-white/20 bg-white/10 text-white">{post.category}</Badge>
-            <h1 className="mt-5 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h1 className="mt-5 text-balance font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               {post.title}
             </h1>
             <div className="mt-5 flex items-center gap-4 text-sm text-white/60">
@@ -109,7 +117,12 @@ export default async function BlogPostPage({ params }: Props) {
         </Container>
       </article>
 
-      <CTA />
+      <CTA
+        title="Have a project in mind?"
+        description="Let's talk about how we can help your business grow online, no obligation."
+        secondaryLabel="Read More Articles"
+        secondaryHref="/blog"
+      />
     </>
   );
 }

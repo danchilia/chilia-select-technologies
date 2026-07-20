@@ -46,11 +46,11 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between container-px">
-        <Link href="/" aria-label={SITE.name} className="flex items-center gap-2.5">
+        <Link href="/" aria-label={SITE.name} className="flex shrink-0 items-center gap-2.5">
           <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary">
           {NAV_LINKS.map((link) => {
             const active = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
             return (
@@ -58,7 +58,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  "relative whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
                   active ? "text-accent" : "text-text-light hover:text-text"
                 )}
               >
@@ -68,8 +68,11 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden shrink-0 items-center gap-3 xl:flex">
           <ThemeToggle className="flex h-10 w-10 items-center justify-center rounded-full text-text-light transition-colors hover:bg-surface hover:text-text" />
+          <Button asChild variant="outline" size="sm">
+            <Link href="/onboarding">Onboarding</Link>
+          </Button>
           <Button asChild size="sm">
             <Link href="/contact">
               Get a Free Quote
@@ -78,7 +81,7 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <ThemeToggle className="flex h-10 w-10 items-center justify-center rounded-full text-text-light transition-colors hover:bg-surface hover:text-text" />
           <button
             type="button"
@@ -99,7 +102,7 @@ export function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-border bg-background lg:hidden"
+            className="overflow-hidden border-t border-border bg-background xl:hidden"
           >
             <nav className="flex flex-col gap-1 px-6 py-6" aria-label="Mobile">
               {NAV_LINKS.map((link) => {
@@ -117,7 +120,10 @@ export function Header() {
                   </Link>
                 );
               })}
-              <Button asChild className="mt-3">
+              <Button asChild variant="outline" className="mt-3">
+                <Link href="/onboarding">Onboarding</Link>
+              </Button>
+              <Button asChild className="mt-2">
                 <Link href="/contact">
                   Get a Free Quote
                   <ArrowRight className="h-4 w-4" />

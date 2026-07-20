@@ -56,7 +56,7 @@ export default function TermsOfServicePage() {
               <h2 className="text-xl font-bold text-text">3. Payment Terms</h2>
               <p className="mt-3 leading-relaxed text-text-light">
                 Pricing is outlined in each project proposal. Payments are accepted through
-                Payoneer and other agreed methods, and are typically structured as a deposit
+                PayPal, Payoneer, Stripe, and other agreed methods, and are typically structured as a deposit
                 prior to work commencing, followed by milestone or completion payments as
                 outlined in the agreement. Work may be paused if payment falls significantly
                 behind the agreed schedule.

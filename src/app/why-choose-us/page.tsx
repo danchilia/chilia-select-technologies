@@ -20,6 +20,7 @@ export default function WhyChooseUsPage() {
         eyebrow="Why Choose Us"
         title="A technology partner built around reliability"
         description="We combine premium design, technical rigor, and consistent communication so you always know your project is in capable hands."
+        image="/images/hero-why-choose-us.jpg"
       />
 
       <section className="py-24 lg:py-32">

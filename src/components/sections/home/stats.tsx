@@ -5,7 +5,7 @@ import { stats } from "@/lib/data/site-content";
 
 export function Stats() {
   return (
-    <section className="bg-primary py-20">
+    <section className="bg-ink py-20">
       <Container>
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-6">
           {stats.map((stat, i) => (

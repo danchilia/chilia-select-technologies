@@ -1,17 +1,21 @@
 export type PricingTier = {
   name: string;
   price: string;
+  originalPrice?: string;
   priceNote: string;
   description: string;
   bestFor: string;
   features: string[];
   highlighted?: boolean;
+  onSale?: boolean;
 };
 
 export const pricingTiers: PricingTier[] = [
   {
     name: "Starter",
-    price: "$600",
+    price: "$300",
+    originalPrice: "$600",
+    onSale: true,
     priceNote: "starting price",
     description: "A professional, custom-built website for businesses establishing their first strong online presence.",
     bestFor: "Small businesses and solo professionals",

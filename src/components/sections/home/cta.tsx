@@ -1,11 +1,25 @@
 import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/constants";
 
-export function CTA() {
+export function CTA({
+  title = "Ready to build something your business can rely on?",
+  description = "Tell us about your project and we'll respond within 24 hours with a clear, tailored quote, no obligation.",
+  primaryLabel = "Get a Free Quote",
+  primaryHref = "/contact",
+  secondaryLabel = "View Our Work",
+  secondaryHref = "/portfolio",
+}: {
+  title?: string;
+  description?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}) {
   return (
     <section className="py-24 lg:py-32">
       <Container>
@@ -13,27 +27,29 @@ export function CTA() {
           <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" />
           <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
           <div className="relative mx-auto max-w-2xl">
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Ready to build something your business can rely on?
+            <h2 className="text-balance font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              {title}
             </h2>
             <p className="mt-4 text-balance text-lg leading-relaxed text-white/85">
-              Tell us about your project and we&apos;ll respond within 24 hours with a clear,
-              tailored quote, no obligation.
+              {description}
             </p>
             <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-                <Link href="/contact">
-                  Get a Free Quote
+                <Link href={primaryHref}>
+                  {primaryLabel}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:border-white hover:text-white hover:bg-white/10">
-                <a href={`mailto:${SITE.email}`}>
-                  <Mail className="h-4 w-4" />
-                  {SITE.email}
-                </a>
+                <Link href={secondaryHref}>{secondaryLabel}</Link>
               </Button>
             </div>
+            <p className="mt-6 text-sm text-white/70">
+              Prefer email?{" "}
+              <a href={`mailto:${SITE.email}`} className="font-semibold text-white hover:underline">
+                {SITE.email}
+              </a>
+            </p>
           </div>
         </Reveal>
       </Container>

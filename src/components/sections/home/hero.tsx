@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { HeroIllustration } from "@/components/illustrations/hero-illustration";
+import { HeroImageSlider } from "@/components/illustrations/hero-image-slider";
 
 const TRUST_POINTS = ["Free project quote", "Response within 24 hours", "International payments accepted"];
 
@@ -30,7 +30,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-6 text-balance text-4xl font-bold leading-[1.1] tracking-tight text-text sm:text-5xl lg:text-[3.4rem]"
+            className="mt-6 text-balance font-display text-4xl font-semibold leading-[1.1] tracking-tight text-text sm:text-5xl lg:text-[3.4rem]"
           >
             Professional Websites and Custom Software That Help Businesses Grow.
           </motion.h1>
@@ -78,7 +78,7 @@ export function Hero() {
           </motion.ul>
         </div>
 
-        <HeroIllustration />
+        <HeroImageSlider />
       </Container>
     </section>
   );

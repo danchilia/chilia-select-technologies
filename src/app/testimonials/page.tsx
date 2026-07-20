@@ -18,6 +18,7 @@ export default function TestimonialsPage() {
         eyebrow="Testimonials"
         title="What clients say, as it happens"
         description="We only publish testimonials from verified clients, no fabricated reviews. Here's where they'll appear as projects are completed."
+        image="/images/hero-testimonials.jpg"
       />
 
       <section className="py-24 lg:py-32">

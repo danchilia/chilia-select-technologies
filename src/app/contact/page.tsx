@@ -38,7 +38,7 @@ const CONTACT_DETAILS = [
   {
     icon: MapPin,
     label: "Payments",
-    value: "International payments accepted via Payoneer",
+    value: "International payments accepted via PayPal, Payoneer, or Stripe",
   },
 ];
 
@@ -61,6 +61,7 @@ export default function ContactPage() {
                     src="/images/developer-working.jpg"
                     alt="A member of our team at work"
                     fill
+                    priority
                     sizes="(min-width: 1024px) 480px, 100vw"
                     className="object-cover"
                   />

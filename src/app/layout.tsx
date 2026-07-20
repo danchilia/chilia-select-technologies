@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { ScrollProgress } from "@/components/layout/scroll-progress";
-import { BackToTop } from "@/components/layout/back-to-top";
-import { FloatingContactButton } from "@/components/layout/floating-contact-button";
-import { CookieConsent } from "@/components/layout/cookie-consent";
-import { LoadingScreen } from "@/components/layout/loading-screen";
-import { PageTransition } from "@/components/layout/page-transition";
+import { SiteChrome } from "@/components/layout/site-chrome";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE, SOCIAL_LINKS } from "@/lib/constants";
 
@@ -17,6 +10,13 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+  axes: ["opsz", "SOFT", "WONK"],
 });
 
 export const metadata: Metadata = {
@@ -98,26 +98,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <JsonLd data={organizationJsonLd} />
         <ThemeProvider>
-          <LoadingScreen />
-          <ScrollProgress />
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
           >
             Skip to content
           </a>
-          <Header />
-          <main id="main-content" className="flex-1">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-          <BackToTop />
-          <FloatingContactButton />
-          <CookieConsent />
+          <SiteChrome>{children}</SiteChrome>
         </ThemeProvider>
       </body>
     </html>

@@ -32,6 +32,7 @@ export default function BlogPage() {
         eyebrow="Blog"
         title="Insights on websites, software, and growth"
         description="Practical, no-fluff articles on what actually helps businesses succeed online."
+        image="/images/hero-blog.jpg"
       />
 
       <section className="py-24 lg:py-32">
@@ -60,7 +61,7 @@ export default function BlogPage() {
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
-                <div className="relative hidden overflow-hidden rounded-2xl bg-primary lg:block">
+                <div className="relative hidden overflow-hidden rounded-2xl bg-ink lg:block">
                   <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.1]" />
                 </div>
               </div>
@@ -71,7 +72,7 @@ export default function BlogPage() {
             {rest.map((post, i) => (
               <Reveal key={post.slug} delay={i * 0.06}>
                 <Link href={`/blog/${post.slug}`} className="group flex h-full flex-col">
-                  <div className="relative aspect-16/10 overflow-hidden rounded-2xl border border-border bg-primary">
+                  <div className="relative aspect-16/10 overflow-hidden rounded-2xl border border-border bg-ink">
                     <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" />
                   </div>
                   <Badge className="mt-4 w-fit">{post.category}</Badge>
