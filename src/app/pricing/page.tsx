@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import { PageHero } from "@/components/layout/page-hero";
 import { CTA } from "@/components/sections/home/cta";
 import { SaleBadge } from "@/components/ui/sale-badge";
+import { AnimatedPrice } from "@/components/ui/animated-price";
+import { PulseBadge } from "@/components/ui/pulse-badge";
 import { JsonLd } from "@/components/seo/json-ld";
 import { pricingTiers, comparisonFeatures } from "@/lib/data/pricing";
 import { breadcrumbJsonLd } from "@/lib/seo";
@@ -43,16 +45,16 @@ export default function PricingPage() {
               <Reveal key={tier.name} delay={i * 0.08}>
                 <div
                   className={cn(
-                    "flex h-full flex-col rounded-3xl border p-8",
+                    "flex h-full flex-col rounded-3xl border p-8 transition-all duration-300",
                     tier.highlighted
-                      ? "relative border-accent bg-ink shadow-xl shadow-accent/10"
-                      : "border-border bg-surface"
+                      ? "relative border-accent bg-ink shadow-xl shadow-accent/10 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent/25"
+                      : "border-border bg-surface hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-xl hover:shadow-primary/5"
                   )}
                 >
                   {tier.highlighted ? (
-                    <span className="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white">
+                    <PulseBadge className="absolute -top-3 left-8 inline-block rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white shadow-lg shadow-accent/30">
                       Most Popular
-                    </span>
+                    </PulseBadge>
                   ) : null}
                   <h3 className={cn("text-lg font-semibold", tier.highlighted ? "text-white" : "text-text")}>
                     {tier.name}
@@ -66,9 +68,10 @@ export default function PricingPage() {
                         {tier.originalPrice}
                       </span>
                     ) : null}
-                    <span className={cn("font-display text-4xl font-semibold tracking-tight", tier.highlighted ? "text-white" : "text-text")}>
-                      {tier.price}
-                    </span>
+                    <AnimatedPrice
+                      value={tier.price}
+                      className={cn("font-display text-4xl font-semibold tracking-tight", tier.highlighted ? "text-white" : "text-text")}
+                    />
                     <span className={cn("text-sm", tier.highlighted ? "text-white/60" : "text-text-light")}>
                       {tier.priceNote}
                     </span>
@@ -98,15 +101,10 @@ export default function PricingPage() {
                     ))}
                   </ul>
 
-                  <Button
-                    asChild
-                    size="lg"
-                    variant={tier.highlighted ? "primary" : "outline"}
-                    className={cn("mt-8", tier.highlighted ? "" : "")}
-                  >
+                  <Button asChild size="lg" variant={tier.highlighted ? "primary" : "outline"} className="group mt-8">
                     <Link href={`/contact?plan=${tier.name.toLowerCase()}`}>
-                      Request a Quote
-                      <ArrowRight className="h-4 w-4" />
+                      {tier.price === "Custom" ? "Request a Quote" : `Choose ${tier.name}`}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                   </Button>
                 </div>
