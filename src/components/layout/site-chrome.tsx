@@ -13,8 +13,9 @@ import { PageTransition } from "@/components/layout/page-transition";
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isDemo = pathname?.startsWith("/demos");
+  const isApp = pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin");
 
-  if (isDemo) {
+  if (isDemo || isApp) {
     return (
       <main id="main-content" className="flex-1">
         {children}

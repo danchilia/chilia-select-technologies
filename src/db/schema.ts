@@ -9,6 +9,7 @@ export const projectStatusEnum = pgEnum("project_status", [
 ]);
 export const invoiceStatusEnum = pgEnum("invoice_status", ["unpaid", "paid"]);
 export const senderRoleEnum = pgEnum("sender_role", ["client", "admin"]);
+export const paymentProviderEnum = pgEnum("payment_provider", ["payoneer", "paypal", "skrill"]);
 
 export const users = pgTable("users", {
   id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
@@ -40,6 +41,9 @@ export const invoices = pgTable("invoices", {
   description: text("description").notNull(),
   amountCents: integer("amount_cents").notNull(),
   status: invoiceStatusEnum("status").notNull().default("unpaid"),
+  paymentProvider: paymentProviderEnum("payment_provider"),
+  paymentLink: text("payment_link"),
+  paidAt: timestamp("paid_at"),
   dueDate: timestamp("due_date"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
@@ -63,5 +67,6 @@ export const messages = pgTable("messages", {
     .references(() => users.id, { onDelete: "cascade" }),
   senderRole: senderRoleEnum("sender_role").notNull(),
   body: text("body").notNull(),
+  readAt: timestamp("read_at"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
