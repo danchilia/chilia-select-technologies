@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { SESSION_COOKIE_NAME, verifySessionToken } from "@/lib/session";
 
-const CLIENT_ROUTES = ["/contact", "/onboarding", "/dashboard"];
+const CLIENT_ROUTES = ["/onboarding", "/dashboard"];
 const ADMIN_ROUTES = ["/admin"];
 
 export async function proxy(request: NextRequest) {
@@ -31,5 +31,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/contact", "/onboarding/:path*", "/dashboard/:path*", "/admin/:path*"],
+  matcher: ["/onboarding/:path*", "/dashboard/:path*", "/admin/:path*"],
 };
