@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Loader2 } from "lucide-react";
@@ -16,6 +16,11 @@ export function SignupForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const next = searchParams.get("next") ?? "/dashboard";
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -60,7 +65,12 @@ export function SignupForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5 rounded-2xl border border-border bg-surface p-8">
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit}
+      noValidate
+      className="scroll-mt-28 flex flex-col gap-5 rounded-2xl border border-border bg-surface p-8"
+    >
       <div className="flex flex-col gap-2">
         <label htmlFor="name" className={labelClasses}>Full Name</label>
         <input
