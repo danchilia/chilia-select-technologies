@@ -73,7 +73,7 @@ export function ContactForm() {
         </p>
         <p className="mt-4 text-sm text-text-light">
           Already agreed on a project with us?{" "}
-          <Link href="/onboarding" className="font-semibold text-accent hover:underline">
+          <Link href="/dashboard/onboarding" className="font-semibold text-accent hover:underline">
             Start onboarding
           </Link>
         </p>

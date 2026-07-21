@@ -102,7 +102,7 @@ export default function PricingPage() {
                   </ul>
 
                   <Button asChild size="lg" variant={tier.highlighted ? "primary" : "outline"} className="group mt-8">
-                    <Link href={`/onboarding?plan=${tier.name.toLowerCase()}`}>
+                    <Link href={`/dashboard/onboarding?plan=${tier.name.toLowerCase()}`}>
                       {tier.price === "Custom" ? "Request a Quote" : `Choose ${tier.name}`}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </Link>

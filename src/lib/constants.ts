@@ -28,7 +28,7 @@ export const FOOTER_LINKS = {
     { label: "Testimonials", href: "/testimonials" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
-    { label: "Client Onboarding", href: "/onboarding" },
+    { label: "Client Onboarding", href: "/dashboard/onboarding" },
   ],
   services: [
     { label: "Business Websites", href: "/services#business-website-development" },

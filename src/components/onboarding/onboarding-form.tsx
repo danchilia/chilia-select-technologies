@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, Loader2, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,13 @@ const labelClasses = "text-sm font-medium text-text";
 const sectionHeadingClasses = "text-xs font-semibold uppercase tracking-wider text-accent";
 const errorClasses = "text-xs font-medium text-red-500";
 
-export function OnboardingForm() {
+export function OnboardingForm({
+  defaultName = "",
+  defaultEmail = "",
+}: {
+  defaultName?: string;
+  defaultEmail?: string;
+}) {
   const searchParams = useSearchParams();
   const presetPlan = searchParams.get("plan") ?? "";
   const [submitted, setSubmitted] = useState(false);
@@ -70,6 +77,9 @@ export function OnboardingForm() {
           Thank you. We&apos;ll review your business details and reach out within 24 hours to
           confirm next steps and kick off the project.
         </p>
+        <Button asChild size="sm" className="mt-5">
+          <Link href="/dashboard">Go to Dashboard</Link>
+        </Button>
       </div>
     );
   }
@@ -95,6 +105,7 @@ export function OnboardingForm() {
               name="name"
               type="text"
               required
+              defaultValue={defaultName}
               onBlur={handleBlur}
               aria-invalid={Boolean(fieldErrors.name)}
               className={inputClasses}
@@ -109,6 +120,7 @@ export function OnboardingForm() {
               name="email"
               type="email"
               required
+              defaultValue={defaultEmail}
               onBlur={handleBlur}
               aria-invalid={Boolean(fieldErrors.email)}
               className={inputClasses}

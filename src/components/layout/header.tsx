@@ -71,7 +71,7 @@ export function Header() {
         <div className="hidden shrink-0 items-center gap-3 xl:flex">
           <ThemeToggle className="flex h-10 w-10 items-center justify-center rounded-full text-text-light transition-colors hover:bg-surface hover:text-text" />
           <Button asChild variant="outline" size="sm">
-            <Link href="/onboarding">Onboarding</Link>
+            <Link href="/dashboard/onboarding">Onboarding</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/contact">
@@ -121,7 +121,7 @@ export function Header() {
                 );
               })}
               <Button asChild variant="outline" className="mt-3">
-                <Link href="/onboarding">Onboarding</Link>
+                <Link href="/dashboard/onboarding">Onboarding</Link>
               </Button>
               <Button asChild className="mt-2">
                 <Link href="/contact">

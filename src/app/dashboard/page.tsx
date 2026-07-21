@@ -5,6 +5,7 @@ import { db } from "@/db";
 import { projects, invoices, messages } from "@/db/schema";
 import { getCurrentUser } from "@/lib/current-user";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { ProjectStatusBadge } from "@/components/dashboard/status-badge";
 
 export default async function DashboardPage() {
@@ -51,8 +52,11 @@ export default async function DashboardPage() {
         {projectList.length === 0 ? (
           <Card className="hover:translate-y-0">
             <p className="text-sm text-text-light">
-              No projects yet. Once we kick off, you&apos;ll see progress here.
+              You haven&apos;t submitted your project details yet.
             </p>
+            <Button asChild size="sm" className="mt-4">
+              <Link href="/dashboard/onboarding">Start Onboarding</Link>
+            </Button>
           </Card>
         ) : (
           <div className="flex flex-col gap-3">
