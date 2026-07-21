@@ -3,32 +3,36 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { hashPassword, createSessionToken, setSessionCookie } from "@/lib/auth";
+import { signupSchema } from "@/lib/auth-schemas";
+import { checkRateLimit, getClientIp, signupIpLimiter } from "@/lib/rate-limit";
+
+const GENERIC_SIGNUP_ERROR =
+  "We couldn't create an account with these details. If you already have an account, try logging in instead.";
 
 export async function POST(request: Request) {
-  const body = await request.json();
-  const { name, email, password, confirmPassword } = body;
-
-  if (!name || !email || !password || !confirmPassword) {
-    return NextResponse.json({ ok: false, error: "All fields are required." }, { status: 400 });
-  }
-  if (password !== confirmPassword) {
-    return NextResponse.json({ ok: false, error: "Passwords do not match." }, { status: 400 });
-  }
-  if (password.length < 8) {
+  const ip = getClientIp(request);
+  const ipCheck = await checkRateLimit(signupIpLimiter, ip);
+  if (!ipCheck.ok) {
     return NextResponse.json(
-      { ok: false, error: "Password must be at least 8 characters." },
+      { ok: false, error: "Too many signup attempts. Please try again later." },
+      { status: 429, headers: { "Retry-After": String(ipCheck.retryAfterSeconds) } }
+    );
+  }
+
+  const body = await request.json();
+  const parsed = signupSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { ok: false, error: parsed.error.issues[0]?.message ?? "Invalid input." },
       { status: 400 }
     );
   }
-
-  const normalizedEmail = String(email).toLowerCase().trim();
+  const { name, email: normalizedEmail, password } = parsed.data;
 
   const existing = await db.select().from(users).where(eq(users.email, normalizedEmail)).limit(1);
   if (existing.length > 0) {
-    return NextResponse.json(
-      { ok: false, error: "An account with this email already exists." },
-      { status: 409 }
-    );
+    // Deliberately generic: don't confirm whether this email is already registered.
+    return NextResponse.json({ ok: false, error: GENERIC_SIGNUP_ERROR }, { status: 409 });
   }
 
   const passwordHash = await hashPassword(password);

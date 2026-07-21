@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { fieldError, validateForm } from "@/lib/validation";
+import { fieldError, sanitizeNextPath, validateForm } from "@/lib/validation";
 
 const inputClasses =
   "h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
@@ -15,7 +15,7 @@ const errorClasses = "text-xs font-medium text-red-500";
 export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams.get("next") ?? "/dashboard";
+  const next = sanitizeNextPath(searchParams.get("next"));
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
