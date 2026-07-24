@@ -40,7 +40,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-light transition-colors hover:border-accent hover:text-accent"
+                    className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-text-light transition-colors hover:border-accent hover:text-accent"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
@@ -83,7 +83,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="text-sm font-semibold text-text">{title}</h3>
+      <h3 className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-light">{title}</h3>
       <ul className="mt-5 flex flex-col gap-3">
         {links.map((link) => (
           <li key={link.label}>

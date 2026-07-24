@@ -10,9 +10,9 @@ import { fieldError, validateForm } from "@/lib/validation";
 import { cn } from "@/lib/utils";
 
 const inputClasses =
-  "h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
+  "h-12 w-full rounded-md border border-border bg-background px-4 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
 const textareaClasses =
-  "w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
+  "w-full resize-none rounded-md border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
 const labelClasses = "text-sm font-medium text-text";
 const errorClasses = "text-xs font-medium text-red-500";
 
@@ -64,8 +64,8 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-start rounded-2xl border border-border bg-surface p-8">
-        <span className="h-1 w-10 rounded-full bg-accent" />
+      <div className="flex flex-col items-start rounded-md border border-border bg-surface p-8">
+        <span className="h-1 w-10 bg-accent" />
         <h3 className="mt-5 text-xl font-bold text-text">Message received</h3>
         <p className="mt-2 leading-relaxed text-text-light">
           Thank you for reaching out. We&apos;ll review your project details and respond within
@@ -82,7 +82,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5 rounded-2xl border border-border bg-surface p-8">
+    <form onSubmit={handleSubmit} noValidate className="spec-corners flex flex-col gap-5 rounded-md border border-border bg-surface p-8">
       <input
         type="text"
         name="website"

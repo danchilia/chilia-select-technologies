@@ -90,9 +90,9 @@ export default function ServicesPage() {
                     <Reveal key={service.slug} delay={(i % 2) * 0.08}>
                       <div
                         id={service.slug}
-                        className="scroll-mt-28 flex h-full flex-col rounded-2xl border border-border bg-background p-7"
+                        className="spec-corners scroll-mt-28 flex h-full flex-col rounded-md border border-border bg-background p-7"
                       >
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-md bg-accent/10 text-accent">
                           <Icon className="h-6 w-6" />
                         </div>
                         <h3 className="mt-5 text-xl font-bold text-text">{service.title}</h3>
@@ -101,14 +101,14 @@ export default function ServicesPage() {
                         <ul className="mt-5 flex flex-col gap-2.5">
                           {service.benefits.map((benefit) => (
                             <li key={benefit} className="flex items-start gap-2.5 text-sm text-text-light">
-                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-accent" />
                               {benefit}
                             </li>
                           ))}
                         </ul>
 
-                        <div className="mt-6 rounded-xl border border-border bg-surface px-4 py-3">
-                          <p className="text-xs font-semibold uppercase tracking-wider text-text-light">
+                        <div className="mt-6 rounded-md border border-border bg-surface px-4 py-3">
+                          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-light">
                             Ideal For
                           </p>
                           <p className="mt-1 text-sm text-text">{service.idealFor}</p>

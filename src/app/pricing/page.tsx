@@ -45,14 +45,14 @@ export default function PricingPage() {
               <Reveal key={tier.name} delay={i * 0.08}>
                 <div
                   className={cn(
-                    "flex h-full flex-col rounded-3xl border p-8 transition-all duration-300",
+                    "spec-corners flex h-full flex-col rounded-md border p-8 transition-colors duration-200",
                     tier.highlighted
-                      ? "relative border-accent bg-ink shadow-xl shadow-accent/10 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent/25"
-                      : "border-border bg-surface hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-xl hover:shadow-primary/5"
+                      ? "relative border-accent bg-ink"
+                      : "border-border bg-surface hover:border-accent/40"
                   )}
                 >
                   {tier.highlighted ? (
-                    <PulseBadge className="absolute -top-3 left-8 inline-block rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white shadow-lg shadow-accent/30">
+                    <PulseBadge className="absolute -top-3 left-8 inline-block rounded-md bg-accent px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-widest text-white">
                       Most Popular
                     </PulseBadge>
                   ) : null}
@@ -77,7 +77,7 @@ export default function PricingPage() {
                     </span>
                   </div>
                   {tier.onSale ? <SaleBadge highlighted={tier.highlighted} /> : null}
-                  <p className={cn("mt-1 text-xs font-medium uppercase tracking-wider", tier.highlighted ? "text-accent-light" : "text-accent")}>
+                  <p className={cn("mt-1 font-mono text-[11px] font-medium uppercase tracking-[0.14em]", tier.highlighted ? "text-accent-light" : "text-accent")}>
                     Best for {tier.bestFor}
                   </p>
 
@@ -92,7 +92,7 @@ export default function PricingPage() {
                       >
                         <span
                           className={cn(
-                            "mt-2 h-1.5 w-1.5 shrink-0 rounded-full",
+                            "mt-2 h-1.5 w-1.5 shrink-0",
                             tier.highlighted ? "bg-accent-light" : "bg-accent"
                           )}
                         />
@@ -123,7 +123,7 @@ export default function PricingPage() {
           />
 
           <Reveal className="mt-14 overflow-x-auto">
-            <table className="w-full min-w-[640px] border-collapse overflow-hidden rounded-2xl border border-border bg-background text-left text-sm">
+            <table className="w-full min-w-[640px] border-collapse overflow-hidden rounded-md border border-border bg-background text-left text-sm">
               <thead>
                 <tr className="border-b border-border">
                   <th className="px-6 py-4 font-semibold text-text">Feature</th>
@@ -167,7 +167,7 @@ export default function PricingPage() {
 
 function ComparisonCell({ value }: { value: boolean | string }) {
   if (value === true) {
-    return <span className="mx-auto block h-1.5 w-1.5 rounded-full bg-accent" />;
+    return <span className="mx-auto block h-1.5 w-1.5 bg-accent" />;
   }
   if (value === false) {
     return <Minus className="mx-auto h-4 w-4 text-text-light/50" />;

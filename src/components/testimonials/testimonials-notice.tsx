@@ -5,10 +5,10 @@ import { Reveal } from "@/components/ui/reveal";
 export function TestimonialsNotice() {
   return (
     <Reveal>
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-ink px-8 py-16 text-center sm:px-16">
+      <div className="spec-corners relative overflow-hidden rounded-md border border-border bg-ink px-8 py-16 text-center sm:px-16">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" />
         <div className="relative mx-auto flex max-w-xl flex-col items-center">
-          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-accent-light">
+          <span className="flex h-14 w-14 items-center justify-center rounded-md bg-white/10 text-accent-light">
             <MessageSquareQuote className="h-7 w-7" />
           </span>
           <h3 className="mt-6 text-2xl font-bold text-white">

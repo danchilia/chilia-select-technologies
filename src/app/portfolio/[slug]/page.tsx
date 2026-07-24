@@ -75,7 +75,7 @@ export default async function ProjectPage({ params }: Props) {
             </Link>
             <div className="mt-6 flex items-center gap-3">
               <Badge className="border-white/20 bg-white/10 text-white">{project.category}</Badge>
-              <span className="text-xs font-medium uppercase tracking-wider text-white/60">
+              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white/60">
                 {project.industry}
               </span>
             </div>
@@ -114,7 +114,7 @@ export default async function ProjectPage({ params }: Props) {
                 <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {project.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5 text-sm text-text-light">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-accent" />
                       {feature}
                     </li>
                   ))}
@@ -123,8 +123,8 @@ export default async function ProjectPage({ params }: Props) {
             </div>
 
             <Reveal delay={0.1}>
-              <div className="rounded-2xl border border-border bg-surface p-7">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-text-light">
+              <div className="spec-corners rounded-md border border-border bg-surface p-7">
+                <h3 className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-light">
                   Technology Used
                 </h3>
                 <div className="mt-4 flex flex-wrap gap-2">

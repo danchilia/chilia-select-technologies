@@ -9,11 +9,11 @@ import { pricingTiers } from "@/lib/data/pricing";
 import { fieldError, validateForm } from "@/lib/validation";
 
 const inputClasses =
-  "h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
+  "h-12 w-full rounded-md border border-border bg-background px-4 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
 const textareaClasses =
-  "w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
+  "w-full resize-none rounded-md border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
 const labelClasses = "text-sm font-medium text-text";
-const sectionHeadingClasses = "text-xs font-semibold uppercase tracking-wider text-accent";
+const sectionHeadingClasses = "font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent";
 const errorClasses = "text-xs font-medium text-red-500";
 
 export function OnboardingForm({
@@ -70,8 +70,8 @@ export function OnboardingForm({
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-start rounded-2xl border border-border bg-surface p-8">
-        <span className="h-1 w-10 rounded-full bg-accent" />
+      <div className="flex flex-col items-start rounded-md border border-border bg-surface p-8">
+        <span className="h-1 w-10 bg-accent" />
         <h3 className="mt-5 text-xl font-bold text-text">Project details received</h3>
         <p className="mt-2 leading-relaxed text-text-light">
           Thank you. We&apos;ll review your business details and reach out within 24 hours to
@@ -85,7 +85,7 @@ export function OnboardingForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-8 rounded-2xl border border-border bg-surface p-8">
+    <form onSubmit={handleSubmit} noValidate className="spec-corners flex flex-col gap-8 rounded-md border border-border bg-surface p-8">
       <input
         type="text"
         name="website"
@@ -260,7 +260,7 @@ export function OnboardingForm({
           </select>
         </div>
 
-        <div className="flex items-start gap-3 rounded-xl border border-accent/30 bg-accent/5 p-4">
+        <div className="flex items-start gap-3 rounded-md border border-accent/30 bg-accent/5 p-4">
           <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
           <p className="text-xs leading-relaxed text-text-light">
             For your security, please don&apos;t include passwords or login credentials in this

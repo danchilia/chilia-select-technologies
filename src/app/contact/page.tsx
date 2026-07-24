@@ -56,7 +56,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.3fr]">
             <div className="flex flex-col gap-8">
               <Reveal>
-                <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
+                <div className="spec-corners relative aspect-video w-full overflow-hidden rounded-md border border-border">
                   <Image
                     src="/images/developer-working.jpg"
                     alt="A member of our team at work"
@@ -79,12 +79,12 @@ export default function ContactPage() {
                 {CONTACT_DETAILS.map((detail, i) => {
                   const Icon = detail.icon;
                   const content = (
-                    <div className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <div className="flex items-start gap-4 rounded-md border border-border bg-surface p-5">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-accent/10 text-accent">
                         <Icon className="h-5 w-5" />
                       </span>
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-wider text-text-light">
+                        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-light">
                           {detail.label}
                         </p>
                         <p className="mt-1 text-sm font-medium text-text">{detail.value}</p>
@@ -118,11 +118,11 @@ export default function ContactPage() {
       <section className="pb-24 lg:pb-32">
         <Container>
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-surface px-8 py-16 text-center sm:px-16">
+            <div className="spec-corners relative overflow-hidden rounded-md border border-border bg-surface px-8 py-16 text-center sm:px-16">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-60" />
               <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.05]" />
               <div className="relative mx-auto flex max-w-xl flex-col items-center">
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                <span className="flex h-14 w-14 items-center justify-center rounded-md bg-accent/10 text-accent">
                   <MapPin className="h-7 w-7" />
                 </span>
                 <h3 className="mt-6 text-2xl font-bold text-text">

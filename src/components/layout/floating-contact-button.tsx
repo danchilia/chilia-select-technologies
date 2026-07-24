@@ -18,21 +18,21 @@ export function FloatingContactButton() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="w-64 overflow-hidden rounded-2xl border border-border bg-surface p-4 shadow-2xl shadow-primary/10"
+            className="w-64 overflow-hidden rounded-md border border-border bg-surface p-4 shadow-2xl shadow-primary/10"
           >
             <p className="text-sm font-semibold text-text">Let&apos;s talk about your project</p>
             <p className="mt-1 text-xs text-text-light">We typically respond within 24 hours.</p>
             <div className="mt-4 flex flex-col gap-2">
               <Link
                 href="/contact"
-                className="flex items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-light"
+                className="flex items-center justify-center gap-2 rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-light"
               >
                 <MessageCircle className="h-4 w-4" />
                 Get a Free Quote
               </Link>
               <a
                 href={`mailto:${SITE.email}`}
-                className="flex items-center justify-center gap-2 rounded-full border border-border px-4 py-2.5 text-sm font-semibold text-text transition-colors hover:border-accent hover:text-accent"
+                className="flex items-center justify-center gap-2 rounded-md border border-border px-4 py-2.5 text-sm font-semibold text-text transition-colors hover:border-accent hover:text-accent"
               >
                 <Mail className="h-4 w-4" />
                 Email Us

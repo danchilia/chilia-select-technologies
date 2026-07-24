@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { fieldError, sanitizeNextPath, validateForm } from "@/lib/validation";
 
 const inputClasses =
-  "h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
+  "h-12 w-full rounded-md border border-border bg-background px-4 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none aria-invalid:border-red-400 aria-invalid:focus:border-red-400";
 const labelClasses = "text-sm font-medium text-text";
 const errorClasses = "text-xs font-medium text-red-500";
 
@@ -66,7 +66,7 @@ export function LoginForm() {
       ref={formRef}
       onSubmit={handleSubmit}
       noValidate
-      className="scroll-mt-28 flex flex-col gap-5 rounded-2xl border border-border bg-surface p-8"
+      className="spec-corners scroll-mt-28 flex flex-col gap-5 rounded-md border border-border bg-surface p-8"
     >
       <div className="flex flex-col gap-2">
         <label htmlFor="email" className={labelClasses}>Email</label>

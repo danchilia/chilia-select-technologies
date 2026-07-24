@@ -27,7 +27,7 @@ export default function TechnologiesPage() {
       <section className="pt-24 lg:pt-32">
         <Container>
           <Reveal>
-            <div className="relative aspect-21/9 w-full overflow-hidden rounded-3xl">
+            <div className="spec-corners relative aspect-21/9 w-full overflow-hidden rounded-md border border-border">
               <Image
                 src="/images/developers-team.jpg"
                 alt="Developers working across our technology stack"
@@ -52,8 +52,8 @@ export default function TechnologiesPage() {
                     const Icon = techIconMap[tech.name];
                     return (
                       <Reveal key={tech.name} delay={i * 0.05}>
-                        <div className="flex h-full flex-col rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                        <div className="spec-corners flex h-full flex-col rounded-md border border-border bg-surface p-6 transition-colors duration-200 hover:border-accent/50">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-md bg-accent/10 text-accent">
                             {Icon ? <Icon className="h-6 w-6" /> : null}
                           </div>
                           <h3 className="mt-4 text-base font-semibold text-text">{tech.name}</h3>

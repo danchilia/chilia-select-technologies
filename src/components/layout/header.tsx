@@ -58,8 +58,8 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
-                  active ? "text-accent" : "text-text-light hover:text-text"
+                  "relative whitespace-nowrap px-3.5 py-2 text-sm font-medium transition-colors after:absolute after:inset-x-3.5 after:bottom-1 after:h-px after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 hover:after:scale-x-100",
+                  active ? "text-accent after:scale-x-100" : "text-text-light hover:text-text"
                 )}
               >
                 {link.label}
@@ -69,7 +69,7 @@ export function Header() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-3 xl:flex">
-          <ThemeToggle className="flex h-10 w-10 items-center justify-center rounded-full text-text-light transition-colors hover:bg-surface hover:text-text" />
+          <ThemeToggle className="flex h-10 w-10 items-center justify-center rounded-md text-text-light transition-colors hover:bg-surface hover:text-text" />
           <Button asChild variant="outline" size="sm">
             <Link href="/dashboard/onboarding">Onboarding</Link>
           </Button>
@@ -82,13 +82,13 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2 xl:hidden">
-          <ThemeToggle className="flex h-10 w-10 items-center justify-center rounded-full text-text-light transition-colors hover:bg-surface hover:text-text" />
+          <ThemeToggle className="flex h-10 w-10 items-center justify-center rounded-md text-text-light transition-colors hover:bg-surface hover:text-text" />
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-text transition-colors hover:bg-surface"
+            className="flex h-10 w-10 items-center justify-center rounded-md text-text transition-colors hover:bg-surface"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -112,7 +112,7 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "rounded-xl px-4 py-3 text-base font-medium transition-colors",
+                      "rounded-md px-4 py-3 text-base font-medium transition-colors",
                       active ? "bg-surface text-accent" : "text-text-light hover:bg-surface hover:text-text"
                     )}
                   >

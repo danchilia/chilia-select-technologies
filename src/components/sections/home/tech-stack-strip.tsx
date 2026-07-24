@@ -25,7 +25,7 @@ export function TechStackStrip() {
             return (
               <div
                 key={`${tech.name}-${i}`}
-                className="flex items-center gap-3 rounded-2xl border border-border bg-surface px-6 py-4"
+                className="flex items-center gap-3 rounded-md border border-border bg-surface px-6 py-4"
               >
                 {Icon ? <Icon className="h-6 w-6 text-text" /> : null}
                 <span className="whitespace-nowrap text-sm font-semibold text-text">

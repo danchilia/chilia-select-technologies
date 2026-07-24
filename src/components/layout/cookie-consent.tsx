@@ -31,7 +31,7 @@ export function CookieConsent() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 40 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-x-4 bottom-4 z-50 mx-auto flex max-w-xl flex-col gap-4 rounded-2xl border border-border bg-surface p-5 shadow-2xl shadow-primary/10 sm:flex-row sm:items-center sm:p-6"
+          className="fixed inset-x-4 bottom-4 z-50 mx-auto flex max-w-xl flex-col gap-4 rounded-md border border-border bg-surface p-5 shadow-2xl shadow-primary/10 sm:flex-row sm:items-center sm:p-6"
           role="dialog"
           aria-label="Cookie consent"
         >
@@ -49,14 +49,14 @@ export function CookieConsent() {
             <button
               type="button"
               onClick={() => respond("declined")}
-              className="rounded-full border border-border px-4 py-2 text-sm font-semibold text-text-light transition-colors hover:text-text"
+              className="rounded-md border border-border px-4 py-2 text-sm font-semibold text-text-light transition-colors hover:text-text"
             >
               Decline
             </button>
             <button
               type="button"
               onClick={() => respond("accepted")}
-              className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-light"
+              className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-light"
             >
               Accept
             </button>

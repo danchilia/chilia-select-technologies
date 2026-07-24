@@ -50,7 +50,7 @@ export function SiteMockup({
   if (variant === "hero") {
     const highlights = project.features.slice(0, 3);
     return (
-      <div className={cn("overflow-hidden rounded-2xl border border-border bg-white shadow-2xl shadow-primary/10", className)}>
+      <div className={cn("spec-corners overflow-hidden rounded-md border border-border bg-white", className)}>
         {project.screenshot ? (
           <div className="relative aspect-16/9 w-full overflow-hidden bg-slate-50">
             <Image
@@ -110,7 +110,7 @@ export function SiteMockup({
 
         <div className="grid grid-cols-1 gap-3 border-t border-border p-5 sm:grid-cols-3 sm:p-6">
           {highlights.map((feature, i) => (
-            <div key={feature} className="flex items-start gap-3 rounded-xl border border-border bg-background p-3.5">
+            <div key={feature} className="flex items-start gap-3 rounded-md border border-border bg-background p-3.5">
               <span
                 className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
                 style={{ background: project.accentFrom }}
@@ -128,7 +128,7 @@ export function SiteMockup({
   return (
     <div
       className={cn(
-        "relative flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent/40 group-hover:shadow-xl group-hover:shadow-primary/5",
+        "spec-corners relative flex flex-col overflow-hidden rounded-md border border-border bg-white transition-colors duration-200 group-hover:border-accent/50",
         project.screenshot ? "aspect-video bg-slate-50" : "aspect-4/3",
         className
       )}
@@ -165,7 +165,7 @@ export function SiteMockup({
             </div>
 
             <div className="relative">
-              <p className="text-xs font-medium uppercase tracking-wider text-white/60">
+              <p className="font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-white/60">
                 {project.industry}
               </p>
               <h3 className="mt-1 text-xl font-bold text-white">{project.name}</h3>

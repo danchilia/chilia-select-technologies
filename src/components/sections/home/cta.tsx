@@ -23,9 +23,8 @@ export function CTA({
   return (
     <section className="py-24 lg:py-32">
       <Container>
-        <Reveal className="relative overflow-hidden rounded-3xl bg-accent px-8 py-16 text-center sm:px-16">
-          <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" />
-          <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+        <Reveal className="relative overflow-hidden rounded-md border border-white/10 bg-ink px-8 py-16 text-center sm:px-16">
+          <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.1]" />
           <div className="relative mx-auto max-w-2xl">
             <h2 className="text-balance font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               {title}
@@ -34,7 +33,7 @@ export function CTA({
               {description}
             </p>
             <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+              <Button asChild size="lg" variant="secondary" className="border-transparent bg-white text-ink hover:bg-white/90">
                 <Link href={primaryHref}>
                   {primaryLabel}
                   <ArrowRight className="h-4 w-4" />

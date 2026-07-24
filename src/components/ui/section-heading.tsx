@@ -23,7 +23,13 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
+        <span
+          className={cn(
+            "flex items-center gap-2 spec-label",
+            align === "center" ? "justify-center" : "justify-start"
+          )}
+        >
+          <span className="h-px w-6 bg-accent" aria-hidden />
           {eyebrow}
         </span>
       ) : null}

@@ -31,7 +31,8 @@ export default function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
-              <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+              <span className="flex items-center gap-2 spec-label">
+                <span className="h-px w-6 bg-accent" aria-hidden />
                 Who We Are
               </span>
               <h2 className="mt-4 text-2xl font-bold tracking-tight text-text sm:text-3xl">
@@ -50,7 +51,8 @@ export default function AboutPage() {
               </p>
             </Reveal>
             <Reveal delay={0.1}>
-              <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+              <span className="flex items-center gap-2 spec-label">
+                <span className="h-px w-6 bg-accent" aria-hidden />
                 What We Do
               </span>
               <h2 className="mt-4 text-2xl font-bold tracking-tight text-text sm:text-3xl">
@@ -76,7 +78,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <Reveal>
               <Card className="h-full">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                <div className="flex h-12 w-12 items-center justify-center rounded-md bg-accent/10 text-accent">
                   <Target className="h-6 w-6" />
                 </div>
                 <h3 className="mt-5 text-xl font-bold text-text">Our Mission</h3>
@@ -89,7 +91,7 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={0.08}>
               <Card className="h-full">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                <div className="flex h-12 w-12 items-center justify-center rounded-md bg-accent/10 text-accent">
                   <Eye className="h-6 w-6" />
                 </div>
                 <h3 className="mt-5 text-xl font-bold text-text">Our Vision</h3>
@@ -107,7 +109,7 @@ export default function AboutPage() {
       <section className="py-24 lg:py-32">
         <Container>
           <Reveal>
-            <div className="relative aspect-21/9 w-full overflow-hidden rounded-3xl">
+            <div className="spec-corners relative aspect-21/9 w-full overflow-hidden rounded-md border border-border">
               <Image
                 src="/images/team-collaboration.jpg"
                 alt="Chilia Select Technologies team collaborating"
@@ -130,10 +132,10 @@ export default function AboutPage() {
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {values.map((value, i) => (
               <Reveal key={value.title} delay={i * 0.06}>
-                <div className="rounded-2xl border border-border bg-surface p-6">
+                <Card>
                   <h3 className="text-lg font-semibold text-text">{value.title}</h3>
                   <p className="mt-2 leading-relaxed text-text-light">{value.description}</p>
-                </div>
+                </Card>
               </Reveal>
             ))}
           </div>

@@ -22,8 +22,8 @@ export function WhyChooseUsPreview() {
             const Icon = getIcon(item.icon);
             return (
               <Reveal key={item.title} delay={i * 0.05}>
-                <div className="rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                <div className="spec-corners rounded-md border border-border bg-background p-6 transition-colors duration-200 hover:border-accent/50">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-md bg-accent/10 text-accent">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="mt-4 text-base font-semibold text-text">{item.title}</h3>

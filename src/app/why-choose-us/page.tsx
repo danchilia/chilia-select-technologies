@@ -30,8 +30,8 @@ export default function WhyChooseUsPage() {
               const Icon = getIcon(item.icon);
               return (
                 <Reveal key={item.title} delay={i * 0.05}>
-                  <div className="flex h-full flex-col rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <div className="spec-corners flex h-full flex-col rounded-md border border-border bg-surface p-7 transition-colors duration-200 hover:border-accent/50">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-md bg-accent/10 text-accent">
                       <Icon className="h-6 w-6" />
                     </div>
                     <h3 className="mt-5 text-lg font-semibold text-text">{item.title}</h3>

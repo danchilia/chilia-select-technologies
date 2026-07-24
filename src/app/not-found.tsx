@@ -8,13 +8,10 @@ import { SITE } from "@/lib/constants";
 export default function NotFound() {
   return (
     <section className="relative flex min-h-[70vh] items-center overflow-hidden py-24">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.05]" />
-      <div className="pointer-events-none absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" />
       <Container className="relative">
         <Reveal className="mx-auto max-w-xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-accent">
-            Error 404
-          </span>
+          <span className="spec-label">§ Error 404 / Not Found</span>
           <h1 className="mt-4 text-balance font-display text-4xl font-semibold tracking-tight text-text sm:text-5xl">
             This page doesn&apos;t exist
           </h1>

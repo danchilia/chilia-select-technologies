@@ -29,7 +29,7 @@ export function PortfolioGrid({ projects }: { projects: Project[] }) {
             onClick={() => setActive(category)}
             aria-pressed={active === category}
             className={cn(
-              "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+              "rounded-md border px-4 py-2 text-sm font-medium transition-colors",
               active === category
                 ? "border-accent bg-accent text-white"
                 : "border-border bg-surface text-text-light hover:border-accent/40 hover:text-text"
@@ -54,7 +54,7 @@ export function PortfolioGrid({ projects }: { projects: Project[] }) {
               <Link href={`/portfolio/${project.slug}`} id={project.slug} className="group block scroll-mt-28">
                 <div className="relative">
                   <SiteMockup project={project} priority={i < 3} />
-                  <span className="absolute right-3 top-11 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
+                  <span className="absolute right-3 top-11 flex h-8 w-8 items-center justify-center rounded-md bg-white/10 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
                 </div>

@@ -47,7 +47,7 @@ export function NewsletterForm() {
       </div>
       {submitted ? (
         <p className="flex items-center gap-2 text-sm font-medium text-accent">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          <span className="h-1.5 w-1.5 bg-accent" />
           Thanks, you&apos;re on the list.
         </p>
       ) : (
@@ -63,7 +63,7 @@ export function NewsletterForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@company.com"
-              className="h-12 w-full rounded-full border border-border bg-background px-5 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none"
+              className="h-12 w-full rounded-md border border-border bg-background px-5 text-sm text-text placeholder:text-text-light transition-colors focus:border-accent focus:outline-none"
             />
             <input
               type="text"

@@ -10,7 +10,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl hover:shadow-primary/5",
+        "spec-corners rounded-md border border-border bg-surface p-6 transition-colors duration-200 hover:border-accent/50",
         className
       )}
     >

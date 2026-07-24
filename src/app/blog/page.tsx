@@ -39,7 +39,7 @@ export default function BlogPage() {
         <Container>
           <Reveal>
             <Link href={`/blog/${featured.slug}`} className="group block">
-              <div className="grid grid-cols-1 gap-8 overflow-hidden rounded-3xl border border-border bg-surface p-8 lg:grid-cols-[1fr_1fr] lg:p-12">
+              <div className="spec-corners grid grid-cols-1 gap-8 overflow-hidden rounded-md border border-border bg-surface p-8 lg:grid-cols-[1fr_1fr] lg:p-12">
                 <div className="flex flex-col justify-center">
                   <Badge>{featured.category}</Badge>
                   <h2 className="mt-4 text-balance text-2xl font-bold text-text sm:text-3xl">
@@ -61,7 +61,7 @@ export default function BlogPage() {
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
-                <div className="relative hidden overflow-hidden rounded-2xl bg-ink lg:block">
+                <div className="relative hidden overflow-hidden rounded-md border border-white/10 bg-ink lg:block">
                   <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.1]" />
                 </div>
               </div>
@@ -72,7 +72,7 @@ export default function BlogPage() {
             {rest.map((post, i) => (
               <Reveal key={post.slug} delay={i * 0.06}>
                 <Link href={`/blog/${post.slug}`} className="group flex h-full flex-col">
-                  <div className="relative aspect-16/10 overflow-hidden rounded-2xl border border-border bg-ink">
+                  <div className="relative aspect-16/10 overflow-hidden rounded-md border border-border bg-ink">
                     <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" />
                   </div>
                   <Badge className="mt-4 w-fit">{post.category}</Badge>
