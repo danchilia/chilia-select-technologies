@@ -29,7 +29,7 @@ export const projects: Project[] = [
     features: ["Online reservation flow", "Animated menu showcase", "Local SEO structure", "Mobile-first design"],
     accentFrom: "#1e293b",
     accentTo: "#0f172a",
-    screenshot: "/portfolio/restaurant-website.png",
+    screenshot: "/portfolio/restaurant-website.webp",
   },
   {
     slug: "dental-clinic",
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     features: ["Appointment request form", "Service and treatment pages", "Insurance information section", "Accessibility-first design"],
     accentFrom: "#2563eb",
     accentTo: "#1e293b",
-    screenshot: "/portfolio/dental-clinic.png",
+    screenshot: "/portfolio/dental-clinic.webp",
   },
   {
     slug: "construction-company",
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     features: ["Project portfolio showcase", "Capability statement pages", "Quote request system", "Team and safety credentials"],
     accentFrom: "#0f172a",
     accentTo: "#2563eb",
-    screenshot: "/portfolio/construction-company.png",
+    screenshot: "/portfolio/construction-company.webp",
   },
   {
     slug: "cleaning-company",
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     features: ["Instant quote request form", "Service package comparison", "Service-area coverage section", "Recurring booking prompts"],
     accentFrom: "#16a34a",
     accentTo: "#0f172a",
-    screenshot: "/portfolio/cleaning-company.png",
+    screenshot: "/portfolio/cleaning-company.webp",
   },
   {
     slug: "real-estate-agency",
@@ -161,7 +161,7 @@ export const projects: Project[] = [
     features: ["Fast checkout interface", "Real-time inventory sync", "Multi-location dashboard", "Sales and staff reporting"],
     accentFrom: "#0f172a",
     accentTo: "#2563eb",
-    screenshot: "/portfolio/pos-system.png",
+    screenshot: "/portfolio/pos-system.webp",
   },
   {
     slug: "inventory-management-system",

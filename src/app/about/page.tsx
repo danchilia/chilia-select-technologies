@@ -24,7 +24,7 @@ export default function AboutPage() {
         eyebrow="About Us"
         title="Built to give growing businesses an enterprise-grade advantage"
         description={`${SITE.name} designs and builds websites and custom software with the same rigor as a large agency, for businesses that don't yet have an in-house engineering team.`}
-        image="/images/office-building.png"
+        image="/images/office-building.webp"
       />
 
       <section className="py-24 lg:py-32">
