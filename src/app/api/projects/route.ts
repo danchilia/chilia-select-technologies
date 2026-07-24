@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { desc, eq } from "drizzle-orm";
 import { db } from "@/db";
-import { projects, users } from "@/db/schema";
+import { projects, projectStatusEvents, users } from "@/db/schema";
 import { getCurrentUser } from "@/lib/current-user";
 
 export async function GET(request: Request) {
@@ -48,6 +48,8 @@ export async function POST(request: Request) {
     .insert(projects)
     .values({ userId, title, notes: notes || null })
     .returning();
+
+  await db.insert(projectStatusEvents).values({ projectId: project.id, status: project.status });
 
   return NextResponse.json({ ok: true, project });
 }

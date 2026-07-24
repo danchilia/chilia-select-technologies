@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { files, users } from "@/db/schema";
 import { getCurrentUser } from "@/lib/current-user";
@@ -11,22 +11,29 @@ export async function GET(request: Request) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ ok: false, error: "Not authenticated." }, { status: 401 });
 
+  const projectId = new URL(request.url).searchParams.get("projectId");
+
   if (user.role === "admin") {
     const targetUserId = new URL(request.url).searchParams.get("userId");
-    const list = targetUserId
-      ? await db
-          .select()
-          .from(files)
-          .where(eq(files.userId, targetUserId))
-          .orderBy(desc(files.createdAt))
-      : await db.select().from(files).orderBy(desc(files.createdAt));
+    const conditions = [
+      targetUserId ? eq(files.userId, targetUserId) : undefined,
+      projectId ? eq(files.projectId, projectId) : undefined,
+    ].filter((c) => c !== undefined);
+    const list = await db
+      .select()
+      .from(files)
+      .where(conditions.length ? and(...conditions) : undefined)
+      .orderBy(desc(files.createdAt));
     return NextResponse.json({ ok: true, files: list });
   }
 
+  const conditions = [eq(files.userId, user.id), projectId ? eq(files.projectId, projectId) : undefined].filter(
+    (c) => c !== undefined
+  );
   const list = await db
     .select()
     .from(files)
-    .where(eq(files.userId, user.id))
+    .where(and(...conditions))
     .orderBy(desc(files.createdAt));
   return NextResponse.json({ ok: true, files: list });
 }

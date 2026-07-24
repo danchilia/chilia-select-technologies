@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { db } from "@/db";
-import { projects } from "@/db/schema";
+import { projects, projectStatusEvents } from "@/db/schema";
 import { getCurrentUser } from "@/lib/current-user";
 import { SITE } from "@/lib/constants";
 import { pricingTiers } from "@/lib/data/pricing";
@@ -75,6 +75,8 @@ export async function POST(request: Request) {
       notes: projectNotes,
     })
     .returning();
+
+  await db.insert(projectStatusEvents).values({ projectId: project.id, status: project.status });
 
   // Email is a best-effort notification; the project record above is the source of truth.
   const apiKey = process.env.RESEND_API_KEY;

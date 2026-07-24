@@ -16,17 +16,23 @@ type FileRecord = {
 export function FileManager({
   currentRole,
   threadUserId,
+  projectId,
 }: {
   currentRole: "client" | "admin";
   /** Required when currentRole is "admin": the client whose files these are. */
   threadUserId?: string;
+  /** Scopes the list (and uploads) to a single project instead of every file the client has. */
+  projectId?: string;
 }) {
   const [files, setFiles] = useState<FileRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const query = currentRole === "admin" && threadUserId ? `?userId=${threadUserId}` : "";
+  const params = new URLSearchParams();
+  if (currentRole === "admin" && threadUserId) params.set("userId", threadUserId);
+  if (projectId) params.set("projectId", projectId);
+  const query = params.toString() ? `?${params.toString()}` : "";
   const disabled = currentRole === "admin" && !threadUserId;
 
   async function load() {
@@ -56,6 +62,7 @@ export function FileManager({
       const formData = new FormData();
       formData.append("file", file);
       if (threadUserId) formData.append("userId", threadUserId);
+      if (projectId) formData.append("projectId", projectId);
 
       const res = await fetch("/api/files", { method: "POST", body: formData });
       const result = await res.json();
@@ -69,7 +76,7 @@ export function FileManager({
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-surface p-6">
+    <div className="rounded-md border border-border bg-surface p-6">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="font-semibold text-text">Files</h3>
         <label
@@ -113,7 +120,7 @@ export function FileManager({
                 href={file.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 rounded-full p-2 text-text-light transition-colors hover:bg-background hover:text-accent"
+                className="shrink-0 rounded-md p-2 text-text-light transition-colors hover:bg-background hover:text-accent"
                 aria-label={`Download ${file.name}`}
               >
                 <Download className="h-4 w-4" />

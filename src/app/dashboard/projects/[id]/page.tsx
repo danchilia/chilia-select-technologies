@@ -1,10 +1,11 @@
 import { and, eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import { db } from "@/db";
-import { projects } from "@/db/schema";
+import { projects, projectStatusEvents } from "@/db/schema";
 import { getCurrentUser } from "@/lib/current-user";
 import { Card } from "@/components/ui/card";
 import { ProjectStatusBadge } from "@/components/dashboard/status-badge";
+import { ProjectStatusTimeline } from "@/components/dashboard/status-timeline";
 import { FileManager } from "@/components/dashboard/file-manager";
 
 export default async function ProjectDetailPage({ params }: PageProps<"/dashboard/projects/[id]">) {
@@ -19,6 +20,11 @@ export default async function ProjectDetailPage({ params }: PageProps<"/dashboar
     .limit(1);
 
   if (!project) notFound();
+
+  const statusEvents = await db
+    .select()
+    .from(projectStatusEvents)
+    .where(eq(projectStatusEvents.projectId, project.id));
 
   return (
     <div className="flex flex-col gap-6">
@@ -39,7 +45,9 @@ export default async function ProjectDetailPage({ params }: PageProps<"/dashboar
         </Card>
       ) : null}
 
-      <FileManager currentRole="client" />
+      <ProjectStatusTimeline events={statusEvents} />
+
+      <FileManager currentRole="client" projectId={project.id} />
     </div>
   );
 }

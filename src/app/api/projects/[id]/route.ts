@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
-import { projects, projectStatusEnum } from "@/db/schema";
+import { projects, projectStatusEnum, projectStatusEvents } from "@/db/schema";
 import { getCurrentUser } from "@/lib/current-user";
 
 const VALID_STATUSES = projectStatusEnum.enumValues;
@@ -33,6 +33,10 @@ export async function PATCH(request: Request, ctx: RouteContext<"/api/projects/[
     })
     .where(eq(projects.id, id))
     .returning();
+
+  if (status !== undefined && status !== existing.status) {
+    await db.insert(projectStatusEvents).values({ projectId: id, status });
+  }
 
   return NextResponse.json({ ok: true, project });
 }

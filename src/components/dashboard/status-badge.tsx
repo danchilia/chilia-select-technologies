@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-const PROJECT_STATUS_LABEL: Record<string, string> = {
+export const PROJECT_STATUS_LABEL: Record<string, string> = {
   pending: "Pending",
   in_progress: "In Progress",
   in_review: "In Review",

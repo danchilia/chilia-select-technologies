@@ -87,7 +87,7 @@ export function ChatThread({
   }
 
   return (
-    <div className="flex h-[32rem] flex-col rounded-2xl border border-border bg-surface">
+    <div className="flex h-[32rem] flex-col rounded-md border border-border bg-surface">
       <div className="flex-1 overflow-y-auto p-5">
         {loading ? (
           <div className="flex h-full items-center justify-center text-text-light">
@@ -139,7 +139,7 @@ export function ChatThread({
           onChange={(e) => setDraft(e.target.value)}
           disabled={disabled || sending}
           placeholder={disabled ? "Select a client first" : "Type a message..."}
-          className="h-11 flex-1 rounded-xl border border-border bg-background px-4 text-sm text-text placeholder:text-text-light focus:border-accent focus:outline-none disabled:opacity-50"
+          className="h-11 flex-1 rounded-md border border-border bg-background px-4 text-sm text-text placeholder:text-text-light focus:border-accent focus:outline-none disabled:opacity-50"
         />
         <Button type="submit" size="sm" disabled={disabled || sending || !draft.trim()}>
           {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}

@@ -32,6 +32,15 @@ export const projects = pgTable("projects", {
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
 
+export const projectStatusEvents = pgTable("project_status_events", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  projectId: text("project_id")
+    .notNull()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  status: projectStatusEnum("status").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
 export const invoices = pgTable("invoices", {
   id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
   userId: text("user_id")
